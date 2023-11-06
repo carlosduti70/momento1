@@ -10,4 +10,5 @@ interface ConferenceRepository : JpaRepository<Conference, Long?> {
     fun findById (id: Long?): Conference?
 
 
+
 }

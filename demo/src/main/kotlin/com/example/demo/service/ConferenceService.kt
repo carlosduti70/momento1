@@ -27,4 +27,17 @@ class ConferenceService {
     fun listById (id:Long?):Conference?{
         return conferenceRepository.findById(id)
     }
+
+
+    fun delete (id: Long?):Boolean?{
+        try{
+            val response = conferenceRepository.findById(id)
+                    ?: throw Exception("ID no existe")
+            conferenceRepository.deleteById(id!!)
+            return true
+        }
+        catch (ex:Exception){
+            throw ResponseStatusException(HttpStatus.NOT_FOUND,ex.message)
+        }
+    }
 }

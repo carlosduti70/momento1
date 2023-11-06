@@ -26,4 +26,10 @@ class ConferenceController {
     fun listById (@PathVariable("id") id: Long): ResponseEntity<*>{
         return ResponseEntity(conferenceService.listById (id), HttpStatus.OK)
     }
+
+    //delete
+    @DeleteMapping("/delete/{id}")
+    fun delete (@PathVariable("id") id: Long):Boolean?{
+        return conferenceService.delete(id)
+    }
 }
